@@ -1,0 +1,22 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: grpc-client
+  #cloud配置
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+# gRPC配置
+grpc:
+  client:
+    grpc-server: #这个名称需要和consul里面的服务名称一致
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
+#springboot自动装配控制台输出级别设置为error
+logging.level.org.springframework.boot: DEBUG
+logging.level.org.springframework.boot.autoconfigure: DEBUG

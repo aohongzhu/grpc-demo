@@ -1,0 +1,20 @@
+#控制台彩色输出
+spring.output.ansi.enabled: always
+spring:
+  application:
+    name: grpc-server
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        healthCheckPath: /actuator/health
+        healthCheckInterval: 10s
+        instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+        serviceName: ${spring.application.name}
+server:
+  port: 8002
+grpc:
+  server:
+    port: 9090
